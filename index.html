@@ -1641,7 +1641,7 @@
       const submitBtn = document.querySelector('.btn-submit');
       submitBtn.disabled = true; submitBtn.textContent = 'Đang gửi...';
       try {
-        const res = await fetch('https://formspree.io/f/FORMSPREE_ID', {
+        const res = await fetch('https://formspree.io/f/mvzlknrd', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
           body: JSON.stringify({ 'Họ và tên': name, 'Tham dự': attendLabel, 'Số lượng': count, 'Khách mời của': sideLabel })
