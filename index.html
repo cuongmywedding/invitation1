@@ -1197,6 +1197,9 @@
 
     <!-- Music button -->
     <button class="music-btn" id="musicBtn" title="Nhạc nền">♪</button>
+    <audio id="bgMusic" loop>
+      <source src="music.mp3" type="audio/mpeg">
+    </audio>
 
     <!-- ═══════════ SECTION 1 ═══════════ -->
     <section class="s1" id="s1">
@@ -1584,11 +1587,17 @@
   <script>
     /* ─── Music ─────────────────────────── */
     const btn = document.getElementById('musicBtn');
+    const audio = document.getElementById('bgMusic');
     let playing = false;
     btn.addEventListener('click', () => {
       playing = !playing;
       btn.classList.toggle('playing', playing);
       btn.textContent = playing ? '♫' : '♪';
+      if (playing) {
+        audio.play().catch(() => showToast('⚠️ Không thể phát nhạc'));
+      } else {
+        audio.pause();
+      }
       showToast(playing ? '🎵 Đang phát nhạc nền' : '🔇 Đã tắt nhạc');
     });
 
@@ -1626,7 +1635,7 @@
     setInterval(tick, 1000);
 
     /* ─── RSVP ──────────────────────────── */
-    function submitRSVP() {
+    async function submitRSVP() {
       const name = document.getElementById('rsvp-name').value.trim();
       const attend = document.querySelector('input[name="attend"]:checked').value;
       const count = document.getElementById('rsvp-count').value;
@@ -1637,15 +1646,41 @@
         return;
       }
 
-      let msg = '';
-      if (attend === 'yes_24') {
-        msg = `✅ Cảm ơn ${name}! Hẹn gặp bạn vào ngày 24 nhé 🎊`;
-      } else if (attend === 'yes_27') {
-        msg = `✅ Cảm ơn ${name}! Hẹn gặp bạn vào ngày 27 nhé 🎊`;
-      } else {
-        msg = `💌 Cảm ơn ${name} đã phản hồi. Rất tiếc vì không có bạn!`;
+      const attendLabel = attend === 'yes_24' ? 'Tham dự ngày 24' : attend === 'yes_27' ? 'Tham dự ngày 27' : 'Không thể tham dự';
+      const sideLabel = side === 'groom' ? 'Nhà trai' : 'Nhà gái';
+
+      const submitBtn = document.querySelector('.btn-submit');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Đang gửi...';
+
+      try {
+        const res = await fetch('https://formspree.io/f/FORMSPREE_ID', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({
+            'Họ và tên': name,
+            'Tham dự': attendLabel,
+            'Số lượng': count,
+            'Khách mời của': sideLabel
+          })
+        });
+
+        if (res.ok) {
+          let msg = attend === 'yes_24'
+            ? `✅ Cảm ơn ${name}! Hẹn gặp bạn vào ngày 24 nhé 🎊`
+            : attend === 'yes_27'
+              ? `✅ Cảm ơn ${name}! Hẹn gặp bạn vào ngày 27 nhé 🎊`
+              : `💌 Cảm ơn ${name} đã phản hồi. Rất tiếc vì không có bạn!`;
+          showToast(msg);
+          submitBtn.textContent = '✓ Đã gửi!';
+        } else {
+          throw new Error('Gửi thất bại');
+        }
+      } catch (err) {
+        showToast('❌ Gửi thất bại, vui lòng thử lại!');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Gửi xác nhận';
       }
-      showToast(msg);
     }
 
     /* ─── Toast ─────────────────────────── */
