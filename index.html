@@ -1197,9 +1197,7 @@
 
     <!-- Music button -->
     <button class="music-btn" id="musicBtn" title="Nhạc nền">♪</button>
-    <audio id="bgMusic" loop>
-      <source src="music.mp3" type="audio/mpeg">
-    </audio>
+    <audio id="bgMusic" loop><source src="music.mp3" type="audio/mpeg"></audio>
 
     <!-- ═══════════ SECTION 1 ═══════════ -->
     <section class="s1" id="s1">
@@ -1502,10 +1500,10 @@
           <label class="form-label">Bạn sẽ tham dự chứ?</label>
           <div class="radio-group">
             <label class="radio-label">
-              <input type="radio" name="attend" value="yes_24" checked> Có, tôi sẽ tham dự ngày 24/5
+              <input type="radio" name="attend" value="yes_24" checked> Có, tôi sẽ tham dự ngày 24
             </label>
             <label class="radio-label">
-              <input type="radio" name="attend" value="yes_27"> Có, tôi sẽ tham dự ngày 27/5
+              <input type="radio" name="attend" value="yes_27"> Có, tôi sẽ tham dự ngày 27
             </label>
             <label class="radio-label">
               <input type="radio" name="attend" value="no"> Tôi bận, rất tiếc không thể tham dự
@@ -1593,11 +1591,8 @@
       playing = !playing;
       btn.classList.toggle('playing', playing);
       btn.textContent = playing ? '♫' : '♪';
-      if (playing) {
-        audio.play().catch(() => showToast('⚠️ Không thể phát nhạc'));
-      } else {
-        audio.pause();
-      }
+      if (playing) { audio.play().catch(() => showToast('⚠️ Không thể phát nhạc')); }
+      else { audio.pause(); }
       showToast(playing ? '🎵 Đang phát nhạc nền' : '🔇 Đã tắt nhạc');
     });
 
@@ -1640,47 +1635,22 @@
       const attend = document.querySelector('input[name="attend"]:checked').value;
       const count = document.getElementById('rsvp-count').value;
       const side = document.querySelector('input[name="side"]:checked').value;
-
-      if (!name) {
-        showToast('⚠️ Vui lòng nhập họ và tên!');
-        return;
-      }
-
+      if (!name) { showToast('⚠️ Vui lòng nhập họ và tên!'); return; }
       const attendLabel = attend === 'yes_24' ? 'Tham dự ngày 24' : attend === 'yes_27' ? 'Tham dự ngày 27' : 'Không thể tham dự';
       const sideLabel = side === 'groom' ? 'Nhà trai' : 'Nhà gái';
-
       const submitBtn = document.querySelector('.btn-submit');
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Đang gửi...';
-
+      submitBtn.disabled = true; submitBtn.textContent = 'Đang gửi...';
       try {
-        const res = await fetch('https://formspree.io/f/mvzlknrd', {
+        const res = await fetch('https://formspree.io/f/FORMSPREE_ID', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify({
-            'Họ và tên': name,
-            'Tham dự': attendLabel,
-            'Số lượng': count,
-            'Khách mời của': sideLabel
-          })
+          body: JSON.stringify({ 'Họ và tên': name, 'Tham dự': attendLabel, 'Số lượng': count, 'Khách mời của': sideLabel })
         });
-
         if (res.ok) {
-          let msg = attend === 'yes_24'
-            ? `✅ Cảm ơn ${name}! Hẹn gặp bạn vào ngày 24 nhé 🎊`
-            : attend === 'yes_27'
-              ? `✅ Cảm ơn ${name}! Hẹn gặp bạn vào ngày 27 nhé 🎊`
-              : `💌 Cảm ơn ${name} đã phản hồi. Rất tiếc vì không có bạn!`;
-          showToast(msg);
-          submitBtn.textContent = '✓ Đã gửi!';
-        } else {
-          throw new Error('Gửi thất bại');
-        }
-      } catch (err) {
-        showToast('❌ Gửi thất bại, vui lòng thử lại!');
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Gửi xác nhận';
-      }
+          let msg = attend === 'yes_24' ? `✅ Cảm ơn ${name}! Hẹn gặp bạn vào ngày 24 nhé 🎊` : attend === 'yes_27' ? `✅ Cảm ơn ${name}! Hẹn gặp bạn vào ngày 27 nhé 🎊` : `💌 Cảm ơn ${name} đã phản hồi. Rất tiếc vì không có bạn!`;
+          showToast(msg); submitBtn.textContent = '✓ Đã gửi!';
+        } else { throw new Error(); }
+      } catch { showToast('❌ Gửi thất bại, vui lòng thử lại!'); submitBtn.disabled = false; submitBtn.textContent = 'Gửi xác nhận'; }
     }
 
     /* ─── Toast ─────────────────────────── */
