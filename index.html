@@ -1,0 +1,1697 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quốc Cường & Trà My – 27.05.2026</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Dancing+Script:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --red: #8b1a2e;
+      --red2: #6e1325;
+      --cream: #fdf5f2;
+      --peach: #f5e5de;
+      --peach2: #edddd6;
+      --white: #ffffff;
+      --text: #2a2a2a;
+      --muted: #666;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Playfair Display', serif;
+      background: #ece0d9;
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 480px;
+      background: var(--cream);
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* ─── MUSIC BUTTON ─────────────────────────────── */
+    .music-btn {
+      position: fixed;
+      top: 16px;
+      right: calc(50% - 224px);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, .45);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      color: #fff;
+      font-size: 18px;
+      transition: transform .3s;
+    }
+
+    .music-btn.playing {
+      animation: spin 4s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* ─── SECTION 1 – HERO ─────────────────────────── */
+    .s1 {
+      position: relative;
+      background: var(--cream);
+    }
+
+    .s1-photo {
+      width: 100%;
+      aspect-ratio: 9/13;
+      background: var(--cream);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .s1-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .s1-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 24px 20px 0;
+      text-align: center;
+    }
+
+    .s1-names {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.6rem;
+      color: #fff;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, .4);
+      line-height: 1.15;
+    }
+
+    .s1-script {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.6rem;
+      color: rgba(255, 255, 255, .72);
+      font-style: italic;
+      text-shadow: 0 1px 8px rgba(0, 0, 0, .35);
+      margin-top: 2px;
+      letter-spacing: 1px;
+    }
+
+    .s1-date {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: 2px;
+      text-shadow: 0 1px 6px rgba(0, 0, 0, .4);
+      margin-top: 6px;
+    }
+
+    /* white arc at bottom of photo */
+    .s1-arc {
+      position: absolute;
+      bottom: -2px;
+      left: -5%;
+      right: -5%;
+      height: 80px;
+      background: var(--cream);
+      border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    }
+
+    .s1-content {
+      background: var(--cream);
+      padding: 0 20px 32px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .s1-symbol {
+      width: 64px;
+      height: 64px;
+      border: 2px solid var(--red);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      color: var(--red);
+      margin: -8px auto 16px;
+      background: var(--cream);
+    }
+
+    .s1-family {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .s1-family-side {
+      padding: 0 6px;
+    }
+
+    .s1-family-label {
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: var(--text);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .s1-family-name {
+      font-size: .82rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.55;
+      min-height: 2.6rem;
+    }
+
+    .s1-family-addr {
+      font-size: .72rem;
+      color: var(--muted);
+      margin-top: 5px;
+      line-height: 1.5;
+    }
+
+    .s1-divider {
+      width: 40px;
+      height: 1.5px;
+      background: var(--peach2);
+      margin: 16px auto;
+    }
+
+    .s1-invite-label {
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      color: var(--text);
+      text-transform: uppercase;
+    }
+
+    .s1-invite-script {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2rem;
+      color: var(--red);
+      margin-top: 4px;
+      line-height: 1.2;
+    }
+
+    .s1-invite-text {
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-top: 8px;
+    }
+
+    /* ─── SECTION 2 – GROOM / BRIDE ───────────────── */
+    .s2 {
+      background: var(--peach);
+      padding: 32px 20px;
+    }
+
+    .s2-portraits {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .s2-portrait {
+      border-radius: 0;
+      overflow: hidden;
+      background: #f0e8e4;
+    }
+
+    .s2-portrait.groom {
+      background: #e8e8e8;
+    }
+
+    .s2-portrait.bride {
+      background: #f0ece8;
+    }
+
+    .s2-portrait img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    .s2-groombride {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: var(--red);
+      font-weight: 700;
+      letter-spacing: 2px;
+      position: relative;
+      line-height: 1;
+    }
+
+    .s2-groombride span.divider {
+      display: inline-flex;
+      align-items: center;
+      padding: 0 2px;
+    }
+
+    .s2-groombride .ribbon {
+      font-size: 1rem;
+      color: var(--red);
+    }
+
+    .s2-names {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 16px;
+      margin-top: 10px;
+    }
+
+    .s2-name {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2rem;
+      color: var(--text);
+    }
+
+    .s2-love {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      letter-spacing: 8px;
+      color: var(--red);
+      margin: 10px 0 24px;
+    }
+
+    /* Arch photo */
+    .s2-arch-wrap {
+      position: relative;
+      margin: 0 16px;
+      overflow: hidden;
+    }
+
+    .s2-arch {
+      width: 100%;
+      aspect-ratio: 9/14;
+      border-radius: 50% 50% 4px 4px / 20% 20% 4px 4px;
+      overflow: hidden;
+      background: linear-gradient(180deg, #7ca86e 0%, #9fc87e 50%, #b8d498 100%);
+    }
+
+    .s2-arch img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Calendar overlay – circular, bottom 50% of arch */
+    .s2-calendar {
+      position: absolute;
+      bottom: -21%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 112%;
+      aspect-ratio: 1;
+      background: rgba(255, 255, 255, .40);
+      backdrop-filter: blur(1px);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 28% 14% 10%;
+    }
+
+    .cal-title {
+      text-align: center;
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.2rem;
+      color: var(--red);
+      margin-bottom: 10px;
+    }
+
+    .cal-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 2px;
+      text-align: center;
+      width: 100%;
+    }
+
+    .cal-day-head {
+      font-size: .65rem;
+      font-weight: 600;
+      color: var(--muted);
+      padding: 2px 0;
+    }
+
+    .cal-day {
+      font-size: .75rem;
+      padding: 4px 0;
+      color: var(--text);
+      border-radius: 50%;
+      cursor: default;
+    }
+
+    .cal-day.empty {
+      background: none;
+    }
+
+    .cal-day.highlight-heart {
+      position: relative;
+      color: #fff;
+      font-weight: 700;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ea5b6c'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E") no-repeat center center;
+      background-size: 140%;
+    }
+
+    /* ─── SECTION 3 – INVITATION CARDS ────────────── */
+    .s3 {
+      background: var(--cream);
+      padding: 28px 20px 32px;
+    }
+
+    .s3-header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .s3-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: .95rem;
+      letter-spacing: 1px;
+      color: var(--text);
+    }
+
+    .s3-header .deco {
+      font-size: .8rem;
+      color: var(--red2);
+      margin-top: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .s3-header .deco::before,
+    .s3-header .deco::after {
+      content: '';
+      display: inline-block;
+      width: 40px;
+      height: 1px;
+      background: var(--red2);
+      margin: 0 8px;
+      opacity: 0.4;
+    }
+
+    .event-card {
+      background: var(--white);
+      border: 1px solid #e8d8d0;
+      border-radius: 6px;
+      padding: 24px 20px 20px;
+      text-align: center;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 15px rgba(139, 26, 46, .08);
+    }
+
+    .event-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--red2);
+      margin-bottom: 6px;
+    }
+
+    .event-card-day {
+      font-size: .7rem;
+      color: var(--text);
+      letter-spacing: 1.5px;
+      margin-bottom: 8px;
+    }
+
+    .event-card-date {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.3rem;
+      font-weight: 600;
+      color: var(--red2);
+      letter-spacing: 1px;
+      line-height: 1;
+    }
+
+    .event-card-lunar {
+      font-family: 'Playfair Display', serif;
+      font-size: .8rem;
+      color: var(--text);
+      margin: 8px 0 12px;
+    }
+
+    .event-card-venue {
+      font-family: 'Playfair Display', serif;
+      font-size: .85rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: .5px;
+      line-height: 1.4;
+    }
+
+    .event-card-addr {
+      font-family: 'Playfair Display', serif;
+      font-size: .75rem;
+      color: var(--text);
+      margin-top: 6px;
+      margin-bottom: 16px;
+    }
+
+    .btn-direction,
+    .btn-direction:visited,
+    .btn-direction:active {
+      display: inline-block;
+      background: var(--red2);
+      color: #ffffff !important;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 24px;
+      font-size: .75rem;
+      font-family: 'Be Vietnam Pro', sans-serif;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background .2s;
+    }
+
+    .btn-direction:hover {
+      background: var(--red2);
+    }
+
+    .s3-ceremony {
+      text-align: center;
+      padding: 24px 0 0;
+    }
+
+    .s3-script {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.8rem;
+      color: var(--red2);
+      line-height: 1;
+      font-weight: 400;
+    }
+
+    .s3-ceremony-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--red2);
+      margin-top: 12px;
+    }
+
+    .s3-day-label {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      letter-spacing: 2px;
+      color: var(--text);
+      margin: 16px 0 12px;
+    }
+
+    .s3-date-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .s3-date-side {
+      font-family: 'Playfair Display', serif;
+      font-size: .9rem;
+      letter-spacing: 1px;
+      color: var(--text);
+      border-top: 1px solid #d0c4bd;
+      border-bottom: 1px solid #d0c4bd;
+      padding: 6px 0;
+      min-width: 80px;
+    }
+
+    .s3-date-big {
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: var(--red2);
+      line-height: 1;
+    }
+
+    .s3-time {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--text);
+      margin-top: 12px;
+      letter-spacing: 1px;
+    }
+
+    .s3-lunar {
+      font-size: .75rem;
+      color: var(--text);
+      margin-top: 8px;
+    }
+
+    /* ─── SECTION 4 – ADDRESS + COUNTDOWN ─────────── */
+    .s4 {
+      background: var(--cream);
+      padding: 28px 20px 32px;
+    }
+
+    .s4-block {
+      margin-bottom: 36px;
+    }
+
+    .s4-top {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .s4-top.right {
+      direction: rtl;
+    }
+
+    .s4-top.right>* {
+      direction: ltr;
+    }
+
+    .s4-photo {
+      aspect-ratio: 3/4;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .s4-photo.a {
+      background: linear-gradient(160deg, #c8c8c8, #888);
+    }
+
+    .s4-photo.b {
+      background: linear-gradient(160deg, #c8c8c8, #888);
+    }
+
+    .s4-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .s4-address-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .s4-addr-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--red2);
+      font-style: italic;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    .s4-addr-title span.d {
+      color: var(--text);
+    }
+
+    .s4-venue-name {
+      font-size: .78rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.4;
+      margin-bottom: 5px;
+    }
+
+    .s4-venue-addr {
+      font-size: .72rem;
+      color: var(--text);
+      line-height: 1.4;
+      margin-bottom: 8px;
+    }
+
+    .s4-map {
+      width: 100%;
+      height: 90px;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid #ddd;
+    }
+
+    .s4-map iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .s4-map-placeholder {
+      width: 100%;
+      height: 100%;
+      background: #e8e8e8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .7rem;
+      color: #999;
+    }
+
+    .countdown {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+      margin: 14px 0;
+    }
+
+    .cd-box {
+      background: var(--red);
+      border-radius: 4px;
+      padding: 8px 4px;
+      text-align: center;
+    }
+
+    .cd-num {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #fff;
+      display: block;
+      line-height: 1;
+    }
+
+    .cd-label {
+      font-size: .6rem;
+      color: rgba(255, 255, 255, .85);
+      margin-top: 3px;
+      display: block;
+    }
+
+    .s4-ceremony {
+      text-align: center;
+      padding: 12px 0;
+    }
+
+    .s4-cer-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--red2);
+    }
+
+    .s4-day-label {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      letter-spacing: 2px;
+      color: var(--text);
+      margin: 14px 0 10px;
+    }
+
+    .s4-date-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .s4-date-side {
+      font-family: 'Playfair Display', serif;
+      font-size: .9rem;
+      letter-spacing: 1px;
+      color: var(--text);
+      border-top: 1px solid #d0c4bd;
+      border-bottom: 1px solid #d0c4bd;
+      padding: 6px 0;
+      min-width: 80px;
+    }
+
+    .s4-date-big {
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: var(--red2);
+      line-height: 1;
+    }
+
+    .s4-time {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--text);
+      margin-top: 10px;
+      letter-spacing: 1px;
+    }
+
+    .s4-lunar {
+      font-size: .75rem;
+      color: var(--text);
+      margin-top: 6px;
+    }
+
+    /* ─── SECTION 5 – WELCOME ──────────────────────── */
+    .s5 {
+      background: var(--peach);
+      padding: 36px 24px 40px;
+      text-align: center;
+    }
+
+    .s5-arch-wrap {
+      position: relative;
+      margin: 0 auto 24px;
+      width: 80%;
+    }
+
+    .s5-arch-text {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+    }
+
+    .s5-arch {
+      width: 100%;
+      aspect-ratio: 9/13;
+      border-radius: 180px 180px 0 0;
+      overflow: hidden;
+      background: linear-gradient(160deg, #8b1a2e 0%, #5a0f1e 50%, #3a0a13 100%);
+    }
+
+    .s5-arch img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .s5-arch-label {
+      position: absolute;
+      top: -18px;
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+    }
+
+    /* Curved text using SVG */
+    .s5-curved-text {
+      width: 100%;
+      height: 100px;
+      overflow: visible;
+    }
+
+    .s5-quote {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.6rem;
+      color: #2a2a2a;
+      line-height: 1.6;
+      max-width: 340px;
+      margin: 24px auto 0;
+    }
+
+    /* ─── SECTION 6 – GALLERY + RSVP ──────────────── */
+    .s6 {
+      background: var(--cream);
+    }
+
+    .s6 {
+      position: relative;
+      padding: 30px 0;
+      background: url('https://w.ladicdn.com/5fc4b7fe7d16ec001264e3ec/a5as5as8a8s8-20260503162947-mnjyh.webp') center/cover no-repeat fixed;
+    }
+
+    .s6::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(246, 238, 235, 0.7);
+      z-index: 0;
+    }
+
+    .s6-photos {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 0 12px;
+    }
+
+    .s6-photo {
+      width: 100%;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .s6-photo.p1 {
+      width: 90%;
+      aspect-ratio: 3/2;
+      align-self: flex-end;
+    }
+
+    .s6-photo.p2 {
+      width: 95%;
+      aspect-ratio: 16/10;
+      align-self: flex-start;
+    }
+
+    .s6-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .s6-rsvp {
+      background: var(--white);
+      margin: 30px 24px 20px;
+      border-radius: 4px;
+      padding: 30px 20px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, .08);
+      position: relative;
+      z-index: 1;
+    }
+
+    .s6-rsvp h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: .8rem;
+      color: var(--text);
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+      font-size: .85rem;
+      font-family: 'Be Vietnam Pro', sans-serif;
+      color: var(--text);
+      background: #fff;
+      outline: none;
+      transition: border-color .2s;
+    }
+
+    .form-input:focus {
+      border-color: #3b82f6;
+    }
+
+    .form-input::placeholder {
+      color: #aaa;
+    }
+
+    .form-select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+      font-size: .85rem;
+      font-family: 'Be Vietnam Pro', sans-serif;
+      color: var(--text);
+      background: #fff;
+      outline: none;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+    }
+
+    .radio-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .radio-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .85rem;
+      color: var(--text);
+      cursor: pointer;
+    }
+
+    .radio-label input[type="radio"] {
+      accent-color: #3b82f6;
+      width: 16px;
+      height: 16px;
+    }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--red2);
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 14px;
+      font-size: .9rem;
+      font-weight: 600;
+      font-family: 'Be Vietnam Pro', sans-serif;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background .2s;
+    }
+
+    .btn-submit:hover {
+      background: var(--red2);
+    }
+
+    .s6-heart {
+      text-align: center;
+      font-size: 3.5rem;
+      padding: 10px 20px 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ─── SECTION 7 – GIFT + THANKS ────────────────── */
+    .s7 {
+      background: var(--cream);
+      padding: 28px 20px 0;
+    }
+
+    .s7-gifts {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .gift-item {
+      text-align: center;
+    }
+
+    .gift-label {
+      font-size: .9rem;
+      color: var(--text);
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+
+    .gift-qr {
+      width: 100%;
+      aspect-ratio: 1;
+      border: none;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(139, 26, 46, .08);
+      overflow: hidden;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+    }
+
+    .gift-bank-logo {
+      font-size: .65rem;
+      font-weight: 700;
+      color: var(--red2);
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .gift-qr-placeholder {
+      width: 85%;
+      aspect-ratio: 1;
+      background: repeating-linear-gradient(0deg, #333 0, #333 3px, #fff 3px, #fff 6px),
+        repeating-linear-gradient(90deg, #333 0, #333 3px, #fff 3px, #fff 6px);
+      background-blend-mode: multiply;
+      border-radius: 4px;
+      image-rendering: pixelated;
+    }
+
+    .gift-banks {
+      font-size: .55rem;
+      font-weight: 700;
+      margin-top: 8px;
+    }
+
+    .gift-name {
+      font-size: .75rem;
+      font-weight: 500;
+      color: var(--red2);
+      margin-top: 14px;
+      line-height: 1.3;
+      letter-spacing: 0.5px;
+    }
+
+    .gift-bank {
+      font-size: .75rem;
+      color: var(--red2);
+      margin-top: 2px;
+    }
+
+    .gift-account {
+      font-size: .75rem;
+      color: var(--red2);
+      margin-top: 2px;
+    }
+
+    .s7-photo {
+      width: 100%;
+      aspect-ratio: 9/16;
+      overflow: hidden;
+      background: linear-gradient(160deg, #e8e8e8, #b0b0b0);
+      position: relative;
+    }
+
+    .s7-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .s7-thanks {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Playfair Display', serif;
+      font-size: 3.2rem;
+      font-weight: 500;
+      color: var(--red2);
+      letter-spacing: 10px;
+      white-space: nowrap;
+    }
+
+    /* The "H" with heart inside THANKS */
+
+    /* ─── TOAST ─────────────────────────────────────── */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #333;
+      color: #fff;
+      padding: 10px 24px;
+      border-radius: 20px;
+      font-size: .8rem;
+      z-index: 1000;
+      opacity: 0;
+      transition: opacity .3s;
+      pointer-events: none;
+    }
+
+    .toast.show {
+      opacity: 1;
+    }
+
+    /* ─── SCROLL ANIMATIONS ─────────────────────────── */
+    .anim-slide-up {
+      opacity: 0;
+      translate: 0 40px;
+      transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), translate 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .anim-from-left {
+      opacity: 0;
+      translate: -50px 0;
+      transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), translate 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .anim-from-right {
+      opacity: 0;
+      translate: 50px 0;
+      transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), translate 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .anim-zoom {
+      opacity: 0;
+      scale: 0.8;
+      transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94), scale 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .anim-blur {
+      opacity: 0;
+      filter: blur(12px);
+      transition: opacity 1.2s ease-out, filter 1.2s ease-out;
+    }
+
+    .anim-flip {
+      opacity: 0;
+      transform: perspective(800px) rotateX(-30deg);
+      transition: opacity 0.9s ease-out, transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .anim-visible {
+      opacity: 1 !important;
+      translate: 0 0 !important;
+      scale: 1 !important;
+      filter: blur(0) !important;
+    }
+
+    /* Note: For flip elements we need a specific visible class to not overwrite other transforms */
+    .anim-flip.anim-visible {
+      transform: perspective(800px) rotateX(0) !important;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <!-- Music button -->
+    <button class="music-btn" id="musicBtn" title="Nhạc nền">♪</button>
+
+    <!-- ═══════════ SECTION 1 ═══════════ -->
+    <section class="s1" id="s1">
+      <div class="s1-photo">
+        <img src="https://w.ladicdn.com/5fc4b7fe7d16ec001264e3ec/sd6sd55sd5-20260503160940-mnfij.webp"
+          alt="Quốc Cường &amp; Trà My" style="width:100%;height:100%;object-fit:cover;display:block;">
+        <div class="s1-overlay">
+          <div class="s1-names">Quốc Cường &nbsp;–&nbsp; Trà My</div>
+          <div class="s1-script">We got married</div>
+          <div class="s1-date">27.05.2026</div>
+        </div>
+        <div class="s1-arc"></div>
+      </div>
+
+      <div class="s1-content">
+        <div class="s1-symbol">囍</div>
+
+        <div class="s1-family">
+          <div class="s1-family-side">
+            <div class="s1-family-label">NHÀ TRAI</div>
+            <div class="s1-family-name">BÀ TRẦN THỊ HẰNG</div>
+            <div class="s1-family-addr">Đ. Nguyễn Văn Cừ<br>Phường Quang Trung, Thanh Hoá</div>
+          </div>
+          <div class="s1-family-side">
+            <div class="s1-family-label">NHÀ GÁI</div>
+            <div class="s1-family-name">ÔNG NGUYỄN MẠNH HÙNG<br>BÀ ĐINH THỊ THU TRANG</div>
+            <div class="s1-family-addr">Đ. Nguyễn Văn Trỗi<br>Phường Phủ Lý, tỉnh Ninh Bình</div>
+          </div>
+        </div>
+
+        <div class="s1-divider"></div>
+        <div class="s1-invite-label">TRÂN TRỌNG KÍNH MỜI</div>
+        <div class="s1-invite-script">Bạn cùng người thương</div>
+        <div class="s1-invite-text">Tham dự lễ cưới của chúng mình</div>
+      </div>
+    </section>
+
+    <!-- ═══════════ SECTION 2 ═══════════ -->
+    <section class="s2" id="s2">
+      <div class="s2-portraits">
+        <div class="s2-portrait groom">
+          <img
+            src="https://w.ladicdn.com/5fc4b7fe7d16ec001264e3ec/z7787575050993_e9f55d20b17f19de901ce8970fa1b130-20260503162044-gik0p.webp"
+            alt="Chú rể Quốc Cường" style="width:100%;height:auto;display:block;">
+        </div>
+        <div class="s2-portrait bride">
+          <img
+            src="https://w.ladicdn.com/5fc4b7fe7d16ec001264e3ec/z7787575035736_34cfddd04b91ed6fad2260723b2be07e-20260503162045-s_vmg.webp"
+            alt="Cô dâu Trà My" style="width:100%;height:auto;display:block;">
+        </div>
+      </div>
+
+      <div class="s2-groombride" style="display:flex;justify-content:center;align-items:center;">
+        <img
+          src="https://w.ladicdn.com/5fc4b7fe7d16ec001264e3ec/f53f068c-a2c7-477d-baef-690cce51f310-20260503174306-cpncx.webp"
+          alt="Bride" style="height:50px;width:auto;object-fit:contain;display:block;">
+        <span
+          style="font-size:25px;color:var(--red2);font-family:'Playfair Display',serif;margin:0 12px;line-height:1;">&amp;</span>
+        <img
+          src="https://w.ladicdn.com/5fc4b7fe7d16ec001264e3ec/332f9d9d-70da-463f-beae-5d81160e33bf-20260503174306-u1z0u.webp"
+          alt="Groom" style="height:50px;width:auto;object-fit:contain;display:block;">
+      </div>
+
+      <div class="s2-names">
+        <span class="s2-name">Quốc Cường</span>
+        <span class="s2-name">Trà My</span>
+      </div>
+
+      <div class="s2-love">L . O . V . E</div>
+
+      <div class="s2-arch-wrap">
+        <div class="s2-arch">
+          <img src="https://w.ladicdn.com/5fc4b7fe7d16ec001264e3ec/sdgfasa5s5a5s5a5s-20260503161428-f3dyl.webp"
+            alt="Couple" style="width:100%;height:100%;object-fit:cover;display:block;">
+        </div>
+
+        <div class="s2-calendar">
+          <div class="cal-title">May . 2026</div>
+          <div class="cal-grid">
+            <div class="cal-day-head">Mo</div>
+            <div class="cal-day-head">Tu</div>
+            <div class="cal-day-head">We</div>
+            <div class="cal-day-head">Th</div>
+            <div class="cal-day-head">Fr</div>
+            <div class="cal-day-head">Sa</div>
+            <div class="cal-day-head">Su</div>
+            <!-- May 1 = Friday (offset 4 in Monday-first) -->
+            <div class="cal-day empty"></div>
+            <div class="cal-day empty"></div>
+            <div class="cal-day empty"></div>
+            <div class="cal-day empty"></div>
+            <div class="cal-day">1</div>
+            <div class="cal-day">2</div>
+            <div class="cal-day">3</div>
+            <div class="cal-day">4</div>
+            <div class="cal-day">5</div>
+            <div class="cal-day">6</div>
+            <div class="cal-day">7</div>
+            <div class="cal-day">8</div>
+            <div class="cal-day">9</div>
+            <div class="cal-day">10</div>
+            <div class="cal-day">11</div>
+            <div class="cal-day">12</div>
+            <div class="cal-day">13</div>
+            <div class="cal-day">14</div>
+            <div class="cal-day">15</div>
+            <div class="cal-day">16</div>
+            <div class="cal-day">17</div>
+            <div class="cal-day">18</div>
+            <div class="cal-day">19</div>
+            <div class="cal-day">20</div>
+            <div class="cal-day">21</div>
+            <div class="cal-day">22</div>
+            <div class="cal-day">23</div>
+            <div class="cal-day highlight-heart">24</div>
+            <div class="cal-day">25</div>
+            <div class="cal-day">26</div>
+            <div class="cal-day highlight-heart">27</div>
+            <div class="cal-day">28</div>
+            <div class="cal-day">29</div>
+            <div class="cal-day">30</div>
+            <div class="cal-day">31</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ SECTION 3 ═══════════ -->
+    <section class="s3" id="s3">
+      <div class="s3-header">
+        <h2>THƯ MỜI TIỆC CƯỚI</h2>
+        <div class="deco">❁</div>
+      </div>
+
+      <!-- Card Nhà Trai -->
+      <div class="event-card">
+        <div class="event-card-title">TIỆC CƯỚI NHÀ TRAI</div>
+        <div class="event-card-day">THỨ TƯ – 11:00</div>
+        <div class="event-card-date">27.05.2026</div>
+        <div class="event-card-lunar">Tức ngày 11 tháng 04 năm Bính Ngọ</div>
+        <div class="event-card-venue">TẠI TRUNG TÂM TỔ CHỨC SỰ KIỆN<br>HƯNG THỊNH PHÁT</div>
+        <div class="event-card-addr">Đ. Nguyễn Văn Cừ, Phường Quang Trung, Thanh Hoá</div>
+        <a class="btn-direction" href="https://maps.app.goo.gl/iybaS6pLS4gR6UQR7" target="_blank">Xem chỉ đường</a>
+      </div>
+
+      <!-- Card Nhà Gái -->
+      <div class="event-card">
+        <div class="event-card-title">TIỆC CƯỚI NHÀ GÁI</div>
+        <div class="event-card-day">CHỦ NHẬT – 11:00</div>
+        <div class="event-card-date">24.05.2026</div>
+        <div class="event-card-lunar">Tức ngày 08 tháng 04 năm Bính Ngọ</div>
+        <div class="event-card-venue">TẠI TRUNG TÂM TIỆC CƯỚI<br>TÂN THUỶ PALACE</div>
+        <div class="event-card-addr">Đ. Trần Văn Chuông, Phường Phù Vân, Ninh Bình</div>
+        <a class="btn-direction" href="https://maps.app.goo.gl/gg2uEBhZa1h6aRQE6" target="_blank">Xem chỉ
+          đường</a>
+      </div>
+
+      <!-- Lễ Thành Hôn -->
+      <div class="s3-ceremony">
+        <div class="s3-script">We got married</div>
+        <div class="s3-ceremony-title">LỄ THÀNH HÔN</div>
+        <div class="s3-day-label">THỨ TƯ</div>
+        <div class="s3-date-row">
+          <span class="s3-date-side">THÁNG 05</span>
+          <span class="s3-date-big">27</span>
+          <span class="s3-date-side">NĂM 2026</span>
+        </div>
+        <div class="s3-time">11 : 00</div>
+        <div class="s3-lunar">Nhằm ngày 11 tháng 04 năm Bính Ngọ</div>
+      </div>
+    </section>
+
+    <!-- ═══════════ SECTION 4 ═══════════ -->
+    <section class="s4" id="s4">
+
+      <!-- Lễ Thành Hôn / Nhà Trai -->
+      <div class="s4-block">
+        <div class="s4-top">
+          <div class="s4-photo a">
+            <img src="https://w.ladicdn.com/5fc4b7fe7d16ec001264e3ec/sdf65as5a55aa5-20260503161825-cx2ef.webp"
+              alt="Lễ Thành Hôn" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          <div class="s4-address-col">
+            <div class="s4-addr-title"><img
+                src="https://w.ladicdn.com/5fc4b7fe7d16ec001264e3ec/5fe64bd1-37de-4e55-bf38-e95fe4af9d17-20260503174306-xcijv.webp"
+                alt="Address" style="height:28px;width:auto;object-fit:contain;"></div>
+            <div class="s4-venue-name">TRUNG TÂM TỔ CHỨC SỰ KIỆN<br>HƯNG THỊNH PHÁT</div>
+            <div class="s4-venue-addr">Đ. Nguyễn Văn Cừ, phường Quang Trung, Thanh Hoá</div>
+            <div class="s4-map">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d239816.43471843642!2d105.56259718671873!3d20.086776900000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313663fd86f94d6b%3A0x4e3e117507e2393d!2zSMawbmcgdGjhu4tuaCBwaMOhdA!5e0!3m2!1sen!2s!4v1777827734361!5m2!1sen!2s"
+                allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+          </div>
+        </div>
+
+        <div class="countdown" id="cd1">
+          <div class="cd-box"><span class="cd-num" id="cd1-d">0</span><span class="cd-label">ngày</span></div>
+          <div class="cd-box"><span class="cd-num" id="cd1-h">0</span><span class="cd-label">giờ</span></div>
+          <div class="cd-box"><span class="cd-num" id="cd1-m">0</span><span class="cd-label">phút</span></div>
+          <div class="cd-box"><span class="cd-num" id="cd1-s">0</span><span class="cd-label">giây</span></div>
+        </div>
+
+
+      </div>
+
+      <!-- Lễ Vu Quy / Nhà Gái -->
+      <div class="s4-block">
+        <div class="s4-ceremony" style="padding-bottom:16px;">
+          <div class="s4-cer-title">LỄ VU QUY</div>
+          <div class="s4-day-label">CHỦ NHẬT</div>
+          <div class="s4-date-row">
+            <span class="s4-date-side">THÁNG 05</span>
+            <span class="s4-date-big">24</span>
+            <span class="s4-date-side">NĂM 2026</span>
+          </div>
+          <div class="s4-time">11 : 00</div>
+          <div class="s4-lunar">Nhằm ngày 08 tháng 04 năm Bính Ngọ</div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">
+          <div class="s4-address-col">
+            <div class="s4-addr-title"><img
+                src="https://w.ladicdn.com/5fc4b7fe7d16ec001264e3ec/5fe64bd1-37de-4e55-bf38-e95fe4af9d17-20260503174306-xcijv.webp"
+                alt="Address" style="height:28px;width:auto;object-fit:contain;"></div>
+            <div class="s4-venue-name">TẠI TRUNG TÂM TIỆC CƯỚI<br>TÂN THUỶ PALACE</div>
+            <div class="s4-venue-addr">Đ. Trần Văn Chuông, Phường Phù Vân, Ninh Bình</div>
+            <div class="s4-map">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3736.2380435009654!2d105.9026784737813!3d20.537439004475125!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135d1e438962d57%3A0x9b319753d3e99729!2zVMOibiBUaOG7p3kgUGFsYWNl!5e0!3m2!1sen!2s!4v1777827980237!5m2!1sen!2s"
+                allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+          </div>
+          <div class="s4-photo b">
+            <img src="https://w.ladicdn.com/5fc4b7fe7d16ec001264e3ec/sdf65as5a5s5a5-20260503161825-ahjkc.webp"
+              alt="Lễ Vu Quy" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+        </div>
+
+        <div class="countdown" id="cd2">
+          <div class="cd-box"><span class="cd-num" id="cd2-d">0</span><span class="cd-label">ngày</span></div>
+          <div class="cd-box"><span class="cd-num" id="cd2-h">0</span><span class="cd-label">giờ</span></div>
+          <div class="cd-box"><span class="cd-num" id="cd2-m">0</span><span class="cd-label">phút</span></div>
+          <div class="cd-box"><span class="cd-num" id="cd2-s">0</span><span class="cd-label">giây</span></div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ═══════════ SECTION 5 ═══════════ -->
+    <section class="s5" id="s5">
+      <div class="s5-arch-wrap">
+        <!-- Curved text "WELCOME TO OUR WEDDING" -->
+        <svg class="s5-curved-text" viewBox="0 0 320 100"
+          style="position:absolute;top:-40px;left:50%;transform:translateX(-50%);width:120%;height:100px;overflow:visible;z-index:2;">
+          <defs>
+            <path id="curve" d="M 20,80 Q 160,-30 300,80" />
+          </defs>
+          <text font-family="'Playfair Display', serif" font-size="14" fill="#2a2a2a" letter-spacing="4"
+            font-weight="500">
+            <textPath href="#curve" startOffset="50%" text-anchor="middle">WELCOME TO OUR WEDDING</textPath>
+          </text>
+        </svg>
+        <div class="s5-arch">
+          <img src="https://w.ladicdn.com/5fc4b7fe7d16ec001264e3ec/asfas5s5ss5aa-20260503162947-htj4w.webp"
+            alt="Welcome" style="width:100%;height:100%;object-fit:cover;display:block;">
+        </div>
+      </div>
+
+      <div class="s5-quote">
+        Hữu duyên nên nghĩa vợ chồng,<br>
+        Trăm năm giữ trọn tấm lòng cùng nhau
+      </div>
+    </section>
+
+    <!-- ═══════════ SECTION 6 ═══════════ -->
+    <section class="s6" id="s6">
+      <div class="s6-photos">
+        <div class="s6-photo p1">
+          <img src="https://w.ladicdn.com/5fc4b7fe7d16ec001264e3ec/a5as5as8a8s8-20260503162947-mnjyh.webp" alt=""
+            style="width:100%;height:100%;object-fit:cover;display:block;">
+        </div>
+        <div class="s6-photo p2" style="aspect-ratio:4/3.5;">
+          <img src="https://w.ladicdn.com/5fc4b7fe7d16ec001264e3ec/sd6fsad55asaa5-20260503162947-44qtx.webp" alt=""
+            style="width:100%;height:100%;object-fit:cover;display:block;">
+        </div>
+      </div>
+
+      <div class="s6-rsvp">
+        <h3>Xác nhận tham dự</h3>
+
+        <div class="form-group">
+          <label class="form-label">Họ và tên</label>
+          <input type="text" class="form-input" placeholder="Nhập tên của bạn" id="rsvp-name">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Bạn sẽ tham dự chứ?</label>
+          <div class="radio-group">
+            <label class="radio-label">
+              <input type="radio" name="attend" value="yes_24" checked> Có, tôi sẽ tham dự ngày 24
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="attend" value="yes_27"> Có, tôi sẽ tham dự ngày 27
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="attend" value="no"> Tôi bận, rất tiếc không thể tham dự
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Số lượng người tham dự</label>
+          <select class="form-select form-input" id="rsvp-count">
+            <option>1 người</option>
+            <option>2 người</option>
+            <option>3 người</option>
+            <option>4 người</option>
+            <option>5 người trở lên</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Bạn là khách mời của ai?</label>
+          <div class="radio-group">
+            <label class="radio-label">
+              <input type="radio" name="side" value="groom" checked> Nhà trai
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="side" value="bride"> Nhà gái
+            </label>
+          </div>
+        </div>
+
+        <button class="btn-submit" onclick="submitRSVP()">Gửi xác nhận</button>
+      </div>
+
+      <div class="s6-heart">💝</div>
+    </section>
+
+    <!-- ═══════════ SECTION 7 ═══════════ -->
+    <section class="s7" id="s7">
+      <div class="s7-gifts">
+        <!-- Chú Rể -->
+        <div class="gift-item">
+          <div class="gift-label">Gửi quà tới chú rể</div>
+          <div class="gift-qr">
+            <img src="https://w.ladicdn.com/5fc4b7fe7d16ec001264e3ec/my-20260503172852-hqyle.webp" alt="QR Chú Rể"
+              style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          <div class="gift-name">NGUYEN HUU QUOC CUONG</div>
+          <div class="gift-bank">Ngân hàng Techcombank</div>
+          <div class="gift-account">1903 6079 8840 11</div>
+        </div>
+
+        <!-- Cô Dâu -->
+        <div class="gift-item">
+          <div class="gift-label">Gửi quà tới cô dâu</div>
+          <div class="gift-qr">
+            <img src="https://w.ladicdn.com/5fc4b7fe7d16ec001264e3ec/cuong-20260503172852-n2mub.webp" alt="QR Cô Dâu"
+              style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          <div class="gift-name">NGUYEN TRA MY</div>
+          <div class="gift-bank">Ngân hàng Techcombank</div>
+          <div class="gift-account">1907 4081 5890 16</div>
+        </div>
+      </div>
+
+      <div class="s7-photo">
+        <img src="https://w.ladicdn.com/5fc4b7fe7d16ec001264e3ec/sd65as5a-20260503162947-ivvi1.webp" alt="Thanks"
+          style="width:100%;height:100%;object-fit:cover;display:block;">
+        <div class="s7-thanks">TH<span style="position:relative;display:inline-block;">A<span
+              style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Great Vibes',cursive;font-size:5rem;color:var(--red2);opacity:0.75;pointer-events:none;">A</span></span>NKS
+        </div>
+      </div>
+    </section>
+
+    <!-- Toast notification -->
+    <div class="toast" id="toast"></div>
+
+  </div><!-- .page -->
+
+  <script>
+    /* ─── Music ─────────────────────────── */
+    const btn = document.getElementById('musicBtn');
+    let playing = false;
+    btn.addEventListener('click', () => {
+      playing = !playing;
+      btn.classList.toggle('playing', playing);
+      btn.textContent = playing ? '♫' : '♪';
+      showToast(playing ? '🎵 Đang phát nhạc nền' : '🔇 Đã tắt nhạc');
+    });
+
+    /* ─── Countdown ─────────────────────── */
+    function getCountdown(targetDate) {
+      const now = new Date();
+      const diff = targetDate - now;
+      if (diff <= 0) return { d: 0, h: 0, m: 0, s: 0 };
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor((diff % 86400000) / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+      return { d, h, m, s };
+    }
+
+    // Lễ Thành Hôn: 27.05.2026 11:00
+    const date1 = new Date('2026-05-27T11:00:00');
+    // Lễ Vu Quy: 24.05.2026 11:00
+    const date2 = new Date('2026-05-24T11:00:00');
+
+    function tick() {
+      const c1 = getCountdown(date1);
+      document.getElementById('cd1-d').textContent = c1.d;
+      document.getElementById('cd1-h').textContent = c1.h;
+      document.getElementById('cd1-m').textContent = c1.m;
+      document.getElementById('cd1-s').textContent = c1.s;
+
+      const c2 = getCountdown(date2);
+      document.getElementById('cd2-d').textContent = c2.d;
+      document.getElementById('cd2-h').textContent = c2.h;
+      document.getElementById('cd2-m').textContent = c2.m;
+      document.getElementById('cd2-s').textContent = c2.s;
+    }
+    tick();
+    setInterval(tick, 1000);
+
+    /* ─── RSVP ──────────────────────────── */
+    function submitRSVP() {
+      const name = document.getElementById('rsvp-name').value.trim();
+      const attend = document.querySelector('input[name="attend"]:checked').value;
+      const count = document.getElementById('rsvp-count').value;
+      const side = document.querySelector('input[name="side"]:checked').value;
+
+      if (!name) {
+        showToast('⚠️ Vui lòng nhập họ và tên!');
+        return;
+      }
+
+      let msg = '';
+      if (attend === 'yes_24') {
+        msg = `✅ Cảm ơn ${name}! Hẹn gặp bạn vào ngày 24 nhé 🎊`;
+      } else if (attend === 'yes_27') {
+        msg = `✅ Cảm ơn ${name}! Hẹn gặp bạn vào ngày 27 nhé 🎊`;
+      } else {
+        msg = `💌 Cảm ơn ${name} đã phản hồi. Rất tiếc vì không có bạn!`;
+      }
+      showToast(msg);
+    }
+
+    /* ─── Toast ─────────────────────────── */
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 3000);
+    }
+
+    /* ─── Scroll animations ──────────────── */
+    const animObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('anim-visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    function observeElements(selector, animClass) {
+      document.querySelectorAll(selector).forEach(el => {
+        el.classList.add(animClass);
+        animObserver.observe(el);
+      });
+    }
+
+    observeElements('.s1-family, .s1-invite-text, .s2-story, .s3-ceremony, .s4-ceremony, .s5-quote', 'anim-slide-up');
+    observeElements('.s1-names, .s3-header, .countdown, .s5-arch', 'anim-blur');
+    observeElements('.s1-script, .s1-date, .s2-groombride, .s6-rsvp', 'anim-flip');
+    observeElements('.s1-photo, .s2-names, .s5-curved-text, .s6-heart, .s7-thanks, .gift-qr, .s7-photo', 'anim-zoom');
+
+    observeElements('.s2-portrait.groom, .s4-photo.a, .s6-photo.p2', 'anim-from-left');
+    observeElements('.s2-portrait.bride, .s4-photo.b, .s6-photo.p1', 'anim-from-right');
+
+    const eventCards = document.querySelectorAll('.event-card');
+    if (eventCards[0]) { eventCards[0].classList.add('anim-from-left'); animObserver.observe(eventCards[0]); }
+    if (eventCards[1]) { eventCards[1].classList.add('anim-from-right'); animObserver.observe(eventCards[1]); }
+
+    const giftItems = document.querySelectorAll('.gift-item');
+    if (giftItems[0]) { giftItems[0].classList.add('anim-from-left'); animObserver.observe(giftItems[0]); }
+    if (giftItems[1]) { giftItems[1].classList.add('anim-from-right'); animObserver.observe(giftItems[1]); }
+
+    const s4cols = document.querySelectorAll('.s4-address-col');
+    if (s4cols[0]) { s4cols[0].classList.add('anim-from-right'); animObserver.observe(s4cols[0]); }
+    if (s4cols[1]) { s4cols[1].classList.add('anim-from-left'); animObserver.observe(s4cols[1]); }
+  </script>
+</body>
+
+</html>
