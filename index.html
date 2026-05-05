@@ -1606,6 +1606,11 @@
           </div>
         </div>
 
+        <!-- Honeypot field – ẩn với người dùng, bot tự fill sẽ bị reject -->
+        <input type="text" name="website" id="rsvp-hp" tabindex="-1" autocomplete="off"
+               style="position:absolute;left:-9999px;opacity:0;height:0;width:0;pointer-events:none;"
+               aria-hidden="true">
+
         <button class="btn-submit" onclick="submitRSVP()">Gửi xác nhận</button>
       </div>
 
@@ -1702,7 +1707,35 @@
     setInterval(tick, 1000);
 
     /* ─── RSVP ──────────────────────────── */
+    /* Anti-spam: timestamp lúc trang load để chặn submit < 2s (bot tốc độ) */
+    const formLoadTime = Date.now();
+    const RSVP_LS_KEY = 'rsvp_submitted_at';
+    const RSVP_LS_TTL = 24 * 60 * 60 * 1000; // 24h block
+
     async function submitRSVP() {
+      const submitBtn = document.querySelector('.btn-submit');
+
+      /* Chặn race: nếu nút đang xử lý/đã gửi thì bỏ qua click thừa */
+      if (submitBtn.disabled) return;
+
+      /* Lớp 1: localStorage – chặn user resubmit trong 24h
+         try-catch phòng khi localStorage bị disable (Safari strict private mode) */
+      try {
+        const lastSubmit = +localStorage.getItem(RSVP_LS_KEY);
+        if (lastSubmit && Date.now() - lastSubmit < RSVP_LS_TTL) {
+          showToast('💌 Bạn đã gửi xác nhận rồi, cảm ơn nhiều!');
+          submitBtn.disabled = true; submitBtn.textContent = '✓ Đã gửi!';
+          return;
+        }
+      } catch (_) { /* storage disabled – bỏ qua, không block submit */ }
+
+      /* Lớp 2: honeypot – bot tự fill input ẩn → silent OK, không gửi */
+      const honeypot = document.getElementById('rsvp-hp').value;
+      if (honeypot) { submitBtn.textContent = '✓ Đã gửi!'; return; }
+
+      /* Lớp 3: min-time – submit < 2s sau khi load = bot */
+      if (Date.now() - formLoadTime < 2000) { submitBtn.textContent = '✓ Đã gửi!'; return; }
+
       const name = document.getElementById('rsvp-name').value.trim();
       const attend = document.querySelector('input[name="attend"]:checked').value;
       const count = document.getElementById('rsvp-count').value;
@@ -1710,15 +1743,14 @@
       if (!name) { showToast('⚠️ Vui lòng nhập họ và tên!'); return; }
       const attendLabel = attend === 'yes_24' ? 'Tham dự ngày 24' : attend === 'yes_27' ? 'Tham dự ngày 27' : 'Không thể tham dự';
       const sideLabel = side === 'groom' ? 'Nhà trai' : 'Nhà gái';
-      const submitBtn = document.querySelector('.btn-submit');
       submitBtn.disabled = true; submitBtn.textContent = 'Đang gửi...';
       try {
-        const res = await fetch('https://formspree.io/f/mvzlknrd', {
+        const res = await fetch('https://script.google.com/macros/s/AKfycbzVj-1eacLfMb7L1DtTbHDlMhyAmmx4jCdt9we8penBuAwTFv8twFKwBSkwvTtN1jJnCw/exec', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify({ 'Họ và tên': name, 'Tham dự': attendLabel, 'Số lượng': count, 'Khách mời của': sideLabel })
+          body: new URLSearchParams({ name: name, attend: attendLabel, count: count, side: sideLabel })
         });
         if (res.ok) {
+          try { localStorage.setItem(RSVP_LS_KEY, Date.now()); } catch (_) {}
           let msg = attend === 'yes_24' ? `✅ Cảm ơn ${name}! Hẹn gặp bạn vào ngày 24 nhé 🎊` : attend === 'yes_27' ? `✅ Cảm ơn ${name}! Hẹn gặp bạn vào ngày 27 nhé 🎊` : `💌 Cảm ơn ${name} đã phản hồi. Rất tiếc vì không có bạn!`;
           showToast(msg); submitBtn.textContent = '✓ Đã gửi!';
         } else { throw new Error(); }
