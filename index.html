@@ -215,45 +215,33 @@
     }
 
     .s1-family-name {
-      /* Be Vietnam Pro is compact sans-serif (~0.55em vs Playfair ~0.65em)
-         so long Vietnamese names like "ÔNG NGUYỄN MẠNH HÙNG" fit on 1 line */
+      /* clamp + semibold (600) + tight letter-spacing so long Vietnamese names
+         "ÔNG NGUYỄN MẠNH HÙNG" (20 ký tự) fit 1 dòng từ iPhone SE 320 trở lên */
       font-family: 'Be Vietnam Pro', sans-serif;
-      font-size: .82rem;
-      font-weight: 700;
+      font-size: clamp(.62rem, 2.7vw, .82rem);
+      font-weight: 600;
+      letter-spacing: -0.2px;
       color: var(--text);
-      line-height: 1.55;
+      line-height: 1.5;
       min-height: 2.6rem;
       flex: 1;
       display: flex;
       align-items: center;
       justify-content: center;
-    }
-
-    /* Shrink family name font on narrow screens so long Vietnamese names
-       (e.g. "ÔNG NGUYỄN MẠNH HÙNG") don't wrap into 3 lines and break alignment */
-    @media (max-width: 400px) {
-      .s1-family-name {
-        font-size: .76rem;
-      }
-    }
-    @media (max-width: 360px) {
-      .s1-family-name {
-        font-size: .72rem;
-      }
+      word-spacing: -1px;
     }
 
     .s1-family-addr {
-      font-size: .72rem;
+      /* Be Vietnam Pro + clamp + tight letter-spacing để
+         "Phường Quang Trung, Thanh Hoá" (30 ký tự) fit 1 dòng từ 360px+ */
+      font-family: 'Be Vietnam Pro', sans-serif;
+      font-size: clamp(.58rem, 2.5vw, .72rem);
+      letter-spacing: -0.2px;
+      word-spacing: -0.5px;
       color: var(--muted);
       margin-top: 5px;
       line-height: 1.5;
       overflow-wrap: break-word;
-    }
-
-    @media (max-width: 400px) {
-      .s1-family-addr {
-        font-size: .68rem;
-      }
     }
 
     .s1-divider {
@@ -1308,7 +1296,7 @@
           <div class="s1-family-side">
             <div class="s1-family-label">NHÀ GÁI</div>
             <div class="s1-family-name">ÔNG NGUYỄN MẠNH HÙNG<br>BÀ ĐINH THỊ THU TRANG</div>
-            <div class="s1-family-addr">Đ. Nguyễn Văn Trỗi<br>Phường Phủ Lý, tỉnh Ninh Bình</div>
+            <div class="s1-family-addr">Đ. Nguyễn Văn Trỗi<br>Phường Phủ Lý, Ninh Bình</div>
           </div>
         </div>
 
