@@ -630,14 +630,18 @@
     }
 
     /* On phones up to iPhone 11 width (≤420px) stack the two columns
-       so the venue name + map don't get squeezed and wrap awkwardly */
+       so the venue name + map don't get squeezed and wrap awkwardly.
+       Keep the photo's natural 3/4 portrait ratio so wedding portraits
+       aren't cropped at the top/bottom. */
     @media (max-width: 420px) {
       .s4-top {
         grid-template-columns: 1fr;
       }
       .s4-top .s4-photo {
         order: -1;
-        aspect-ratio: 16/9;
+        max-width: 320px;
+        margin-left: auto;
+        margin-right: auto;
       }
       .s4-top.right {
         direction: ltr;
@@ -1298,15 +1302,15 @@
         </div>
       </div>
 
-      <div class="s2-groombride" style="display:flex;justify-content:center;align-items:center;">
+      <div class="s2-groombride" style="display:flex;justify-content:center;align-items:center;flex-wrap:nowrap;max-width:100%;">
         <img
           src="https://w.ladicdn.com/5fc4b7fe7d16ec001264e3ec/f53f068c-a2c7-477d-baef-690cce51f310-20260503174306-cpncx.webp"
-          alt="Bride" style="height:50px;width:auto;object-fit:contain;display:block;">
+          alt="Bride" style="height:clamp(30px,10vw,50px);width:auto;max-width:42%;object-fit:contain;display:block;flex-shrink:0;">
         <span
-          style="font-size:25px;color:var(--red2);font-family:'Playfair Display',serif;margin:0 12px;line-height:1;">&amp;</span>
+          style="font-size:clamp(18px,5.5vw,25px);color:var(--red2);font-family:'Playfair Display',serif;margin:0 clamp(6px,2.5vw,12px);line-height:1;flex-shrink:0;">&amp;</span>
         <img
           src="https://w.ladicdn.com/5fc4b7fe7d16ec001264e3ec/332f9d9d-70da-463f-beae-5d81160e33bf-20260503174306-u1z0u.webp"
-          alt="Groom" style="height:50px;width:auto;object-fit:contain;display:block;">
+          alt="Groom" style="height:clamp(30px,10vw,50px);width:auto;max-width:42%;object-fit:contain;display:block;flex-shrink:0;">
       </div>
 
       <div class="s2-names">
