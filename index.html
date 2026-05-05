@@ -195,7 +195,7 @@
     /* Flex column so the name flex-grows; addresses on both sides line up
        at the bottom even when one side has 1 name and the other has 2. */
     .s1-family-side {
-      padding: 0 12px;
+      padding: 0 8px;
       display: flex;
       flex-direction: column;
     }
@@ -205,6 +205,7 @@
     }
 
     .s1-family-label {
+      font-family: 'Be Vietnam Pro', sans-serif;
       font-size: .72rem;
       font-weight: 700;
       letter-spacing: 1.5px;
@@ -214,6 +215,9 @@
     }
 
     .s1-family-name {
+      /* Be Vietnam Pro is compact sans-serif (~0.55em vs Playfair ~0.65em)
+         so long Vietnamese names like "ÔNG NGUYỄN MẠNH HÙNG" fit on 1 line */
+      font-family: 'Be Vietnam Pro', sans-serif;
       font-size: .82rem;
       font-weight: 700;
       color: var(--text);
