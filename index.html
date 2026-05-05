@@ -118,15 +118,16 @@
       text-align: center;
     }
 
-    /* FIX #3: s1-names – clamp font size so long Vietnamese names
-       don't overflow on iPhone SE (375px) or Galaxy A series (360px) */
+    /* s1-names – allow natural wrap on narrow phones; clamp font for fit */
     .s1-names {
       font-family: 'Great Vibes', cursive;
-      font-size: clamp(1.9rem, 6.5vw, 2.6rem);
+      font-size: clamp(1.7rem, 6.2vw, 2.6rem);
       color: #fff;
       text-shadow: 0 2px 10px rgba(0, 0, 0, .4);
-      line-height: 1.15;
-      white-space: nowrap; /* keep on one line; clamp handles overflow */
+      line-height: 1.25;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+      padding: 0 8px;
     }
 
     .s1-script {
@@ -223,6 +224,13 @@
       color: var(--muted);
       margin-top: 5px;
       line-height: 1.5;
+      overflow-wrap: break-word;
+    }
+
+    @media (max-width: 400px) {
+      .s1-family-addr {
+        font-size: .68rem;
+      }
     }
 
     .s1-divider {
@@ -242,14 +250,14 @@
 
     .s1-invite-script {
       font-family: 'Dancing Script', cursive;
-      font-size: 2rem;
+      font-size: clamp(1.6rem, 5.6vw, 2rem);
       color: var(--red);
       margin-top: 4px;
       line-height: 1.2;
     }
 
     .s1-invite-text {
-      font-size: 1.3rem;
+      font-size: clamp(1.05rem, 4.2vw, 1.3rem);
       font-weight: 500;
       color: var(--text);
       margin-top: 8px;
@@ -354,13 +362,14 @@
       object-fit: cover;
     }
 
-    /* Calendar overlay – circular, bottom 50% of arch */
+    /* Calendar overlay – circular, bottom of arch.
+       width 100% so the circle stays round inside the clipped arch-wrap */
     .s2-calendar {
       position: absolute;
       bottom: -21%;
       left: 50%;
       transform: translateX(-50%);
-      width: 112%;
+      width: 100%;
       aspect-ratio: 1;
       background: rgba(255, 255, 255, .40);
       backdrop-filter: blur(1px);
@@ -369,7 +378,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
-      padding: 28% 14% 10%;
+      padding: 24% 12% 10%;
     }
 
     .cal-title {
@@ -620,16 +629,18 @@
       margin-bottom: 16px;
     }
 
-    /* FIX #4: on very small screens (≤360px) stack the two columns
-       so venue name and map don't get squeezed unreadably */
-    @media (max-width: 360px) {
+    /* On phones up to iPhone 11 width (≤420px) stack the two columns
+       so the venue name + map don't get squeezed and wrap awkwardly */
+    @media (max-width: 420px) {
       .s4-top {
         grid-template-columns: 1fr;
       }
-      /* When stacked, put photo above address by reordering */
       .s4-top .s4-photo {
         order: -1;
-        aspect-ratio: 16/9; /* landscape when full-width */
+        aspect-ratio: 16/9;
+      }
+      .s4-top.right {
+        direction: ltr;
       }
     }
 
@@ -813,7 +824,9 @@
     /* ─── SECTION 5 – WELCOME ──────────────────────── */
     .s5 {
       background: var(--peach);
-      padding: 36px 24px 40px;
+      /* extra top padding so the SVG curved text (top:-40px, overflow visible)
+         doesn't bleed up into the previous section */
+      padding: 56px 24px 40px;
       text-align: center;
     }
 
@@ -821,7 +834,9 @@
       position: relative;
       margin: 0 auto 24px;
       width: 80%;
-      overflow: hidden; /* FIX #2: clip the 120%-wide SVG so it can't bleed out */
+      /* overflow visible so the 120%-wide curved SVG text isn't clipped;
+         body has overflow-x:hidden so it cannot leak past the page */
+      overflow: visible;
     }
 
     .s5-arch-text {
@@ -1238,7 +1253,7 @@
         <img src="https://w.ladicdn.com/5fc4b7fe7d16ec001264e3ec/sd6sd55sd5-20260503160940-mnfij.webp"
           alt="Quốc Cường &amp; Trà My" style="width:100%;height:100%;object-fit:cover;display:block;">
         <div class="s1-overlay">
-          <div class="s1-names">Quốc Cường &nbsp;–&nbsp; Trà My</div>
+          <div class="s1-names">Quốc Cường &ndash; Trà My</div>
           <div class="s1-script">We got married</div>
           <div class="s1-date">27.05.2026</div>
         </div>
@@ -1452,7 +1467,7 @@
           <div class="s4-lunar">Nhằm ngày 08 tháng 04 năm Bính Ngọ</div>
         </div>
 
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">
+        <div class="s4-top">
           <div class="s4-address-col">
             <div class="s4-addr-title"><img
                 src="https://w.ladicdn.com/5fc4b7fe7d16ec001264e3ec/5fe64bd1-37de-4e55-bf38-e95fe4af9d17-20260503174306-xcijv.webp"
@@ -1605,7 +1620,7 @@
         <img src="https://w.ladicdn.com/5fc4b7fe7d16ec001264e3ec/sd65as5a-20260503162947-ivvi1.webp" alt="Thanks"
           style="width:100%;height:100%;object-fit:cover;display:block;">
         <div class="s7-thanks">TH<span style="position:relative;display:inline-block;">A<span
-              style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Great Vibes',cursive;font-size:5rem;color:var(--red2);opacity:0.75;pointer-events:none;">A</span></span>NKS
+              style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Great Vibes',cursive;font-size:clamp(3rem,12vw,5rem);color:var(--red2);opacity:0.75;pointer-events:none;line-height:1;">A</span></span>NKS
         </div>
       </div>
     </section>
