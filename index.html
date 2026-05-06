@@ -1583,7 +1583,7 @@
           </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" id="rsvp-count-group">
           <label class="form-label">Số lượng người tham dự</label>
           <select class="form-select form-input" id="rsvp-count">
             <option>1 người</option>
@@ -1712,6 +1712,18 @@
     const RSVP_LS_KEY = 'rsvp_submitted_at';
     const RSVP_LS_TTL = 24 * 60 * 60 * 1000; // 24h block
 
+    /* Ẩn/hiện dropdown "Số lượng người tham dự" theo lựa chọn attend.
+       Nếu chọn "Tôi bận, không thể tham dự" → ẩn (vì không có ý nghĩa). */
+    const countGroup = document.getElementById('rsvp-count-group');
+    function toggleCountVisibility() {
+      const attend = document.querySelector('input[name="attend"]:checked').value;
+      countGroup.style.display = attend === 'no' ? 'none' : '';
+    }
+    document.querySelectorAll('input[name="attend"]').forEach(r =>
+      r.addEventListener('change', toggleCountVisibility)
+    );
+    toggleCountVisibility(); // initial state
+
     async function submitRSVP() {
       const submitBtn = document.querySelector('.btn-submit');
 
@@ -1738,16 +1750,18 @@
 
       const name = document.getElementById('rsvp-name').value.trim();
       const attend = document.querySelector('input[name="attend"]:checked').value;
-      const count = document.getElementById('rsvp-count').value;
       const side = document.querySelector('input[name="side"]:checked').value;
       if (!name) { showToast('⚠️ Vui lòng nhập họ và tên!'); return; }
       const attendLabel = attend === 'yes_24' ? 'Tham dự ngày 24' : attend === 'yes_27' ? 'Tham dự ngày 27' : 'Không thể tham dự';
       const sideLabel = side === 'groom' ? 'Nhà trai' : 'Nhà gái';
       submitBtn.disabled = true; submitBtn.textContent = 'Đang gửi...';
       try {
+        /* Khi không tham dự, bỏ luôn field count khỏi body */
+        const payload = { name: name, attend: attendLabel, side: sideLabel };
+        if (attend !== 'no') payload.count = document.getElementById('rsvp-count').value;
         const res = await fetch('https://script.google.com/macros/s/AKfycbzVj-1eacLfMb7L1DtTbHDlMhyAmmx4jCdt9we8penBuAwTFv8twFKwBSkwvTtN1jJnCw/exec', {
           method: 'POST',
-          body: new URLSearchParams({ name: name, attend: attendLabel, count: count, side: sideLabel })
+          body: new URLSearchParams(payload)
         });
         if (res.ok) {
           try { localStorage.setItem(RSVP_LS_KEY, Date.now()); } catch (_) {}
